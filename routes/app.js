@@ -1,7 +1,13 @@
 const express = require('express')
 const app = express()
+let countRequests = 0
 
 app.use(express.json())
+
+app.use((req, res, next) => {
+  console.log(`Requisition number: ${++countRequests}`)
+  return next()
+})
 
 const projects = []
 
